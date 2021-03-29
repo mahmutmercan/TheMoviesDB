@@ -34,6 +34,9 @@ class MovieDetailVC: UIViewController {
       getMovieById(movieId: selectedMovie!.id)
         fetchPopularMovies()
         setInterface()
+        let gestureSlideBack = UISwipeGestureRecognizer(target: self, action: #selector(self.backTapped))
+                      gestureSlideBack.direction = .right
+                      self.view.addGestureRecognizer(gestureSlideBack)
         
     }
     
@@ -56,6 +59,11 @@ class MovieDetailVC: UIViewController {
         tableView.register(VideosTVC.nib(), forCellReuseIdentifier: VideosTVC.identifier)
         
     }
+    
+    @objc func backTapped() {
+            self.dismiss(animated: true, completion: nil)
+            navigationController?.popViewController(animated: true)
+        }
     
 }
 
