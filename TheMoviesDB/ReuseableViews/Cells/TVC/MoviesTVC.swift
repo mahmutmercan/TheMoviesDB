@@ -113,9 +113,6 @@ extension MoviesTVC: UICollectionViewDelegate, UICollectionViewDataSource,UIColl
 }
 
 
-
-
-
 extension MoviesTVC {
     func openNextVC(storyboardName: String, vcName: String){
         let storyboard = UIStoryboard(name: storyboardName, bundle: nil)

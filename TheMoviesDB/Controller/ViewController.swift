@@ -83,7 +83,6 @@
 //
 //
 //        if indexPath.section == 0 {
-//            print("firstSection")
 //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCVC.identifier, for: indexPath as IndexPath) as! MovieCVC
 //            cell.cellConfigure(posterImage: "SampleImage", movieName: "Movie Temp Name")
 //
@@ -106,7 +105,6 @@
 //    }
 //
 //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        print("You selected cell #\(indexPath.item)!")
 //
 //    }
 //

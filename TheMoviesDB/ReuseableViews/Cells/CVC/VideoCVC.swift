@@ -17,7 +17,6 @@ class VideoCVC: UICollectionViewCell {
     @IBOutlet weak var videoContainer: UIView!
     
     static let identifier: String = "VideoCVC"
-    
    
 
     var cellTapAction : (()->())?

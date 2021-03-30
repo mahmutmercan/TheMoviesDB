@@ -73,9 +73,9 @@ extension VideosTVC: UICollectionViewDelegate, UICollectionViewDataSource,UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoCVC.identifier, for: indexPath) as! VideoCVC
-        cell.cellConfigure(previewImage: "sampleImage")
+        cell.cellConfigure(previewImage: "sampleImage")        
+        
         cell.cellTapAction = {
-            
         }
         
         return cell

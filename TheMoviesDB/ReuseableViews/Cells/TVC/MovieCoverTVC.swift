@@ -52,6 +52,8 @@ class MovieCoverTVC: UITableViewCell {
             options: [.transition(.fade(0.5))]
         )
         
+        
+        
         self.titleLabel.text = movieName
         
         self.rateLabel.text = rateLabel

@@ -49,18 +49,13 @@ class MovieCVC: UICollectionViewCell {
     func cellConfigure(posterImage: String, movieName: String){
         
         self.posterImageView.image = UIImage(named: posterImage)
-        
-        
         let imageUrl = Constant.MOVIE_DB_IMAGE_BASE_PATH.appending(posterImage)
-        
         
         self.posterImageView.kf.setImage(
             with: URL(string: imageUrl),
             placeholder: self.placeholder,
             options: [.transition(.fade(0.5))]
         )
-        
-        
         
         self.titleLabel.text = movieName
     }

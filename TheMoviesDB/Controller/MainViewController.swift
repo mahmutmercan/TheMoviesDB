@@ -18,8 +18,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
  
     var selectedMovie: Movie!
+    var selectedMovieId: Int = 0
   
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setInterface()
@@ -40,13 +40,11 @@ class MainViewController: UIViewController {
     
 }
 
-
 extension MainViewController {
     private func setTargets(){
         
     }
 }
-
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,10 +61,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             guard let self = self else { return }
             
             self.selectedMovie = selectedMovie
+            self.selectedMovieId = selectedMovie.id
             self.performSegue(withIdentifier: "MovieDetailVC", sender: nil)
             
           }
-            //cell.configure(imagePath: item.posterPath, movieName: item.originalTitle)
             
             return cell
         } else if indexPath.row == 1 {
@@ -78,6 +76,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
               guard let self = self else { return }
               
               self.selectedMovie = selectedMovie
+              self.selectedMovieId = selectedMovie.id
               self.performSegue(withIdentifier: "MovieDetailVC", sender: nil)
               
             }
@@ -86,7 +85,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         return UITableViewCell()
     }
     
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 390
     }
@@ -94,14 +92,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       if let vc = segue.destination as? MovieDetailVC{
         vc.selectedMovie = self.selectedMovie
+        vc.selectedMovieId = self.selectedMovieId
       }
     }
 }
-
-
-
-
-
 
 // MARK: - Alamofire
 extension MainViewController {
@@ -109,27 +103,20 @@ extension MainViewController {
   func fetchPopularMovies() {
     AF.request("https://api.themoviedb.org/3/movie/\(Constant.popular)?api_key=\(Constant.API_KEY)&language=en-US&page=1").validate().responseDecodable(of: Movies.self) { (response) in
       
-      print(response.value?.results.count)
-
       guard let movies = response.value?.results else { return }
-      print(movies.first?.originalTitle)
       self.films.append(movies)
       self.tableView.reloadData()
       self.fetchUpcomingMovies()
     }
-    
   }
     
     func fetchUpcomingMovies() {
         AF.request("https://api.themoviedb.org/3/movie/\(Constant.upcoming)?api_key=\(Constant.API_KEY)&language=en-US&page=1").validate().responseDecodable(of: Movies.self) { (response) in
         
-        print(response.value?.results.count)
         guard let movies = response.value?.results else { return }
-        print(movies.first?.originalTitle)
         self.films.append(movies)
         self.tableView.reloadData()
       }
-      
     }
 }
 
