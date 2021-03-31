@@ -33,8 +33,7 @@ class MovieCoverTVC: UITableViewCell {
         return UINib(nibName: identifier, bundle: nil)
     }
     
-    
-    private func setupCell(){
+     private func setupCell(){
         layer.backgroundColor = UIColor.black.cgColor
         layer.cornerRadius = 4
         posterImageView.contentMode = .scaleToFill
@@ -45,20 +44,14 @@ class MovieCoverTVC: UITableViewCell {
         
         let imageUrl = Constant.MOVIE_DB_IMAGE_BASE_PATH.appending(posterImage)
         
-        
         self.posterImageView.kf.setImage(
             with: URL(string: imageUrl),
             placeholder: self.placeholder,
             options: [.transition(.fade(0.5))]
         )
         
-        
-        
         self.titleLabel.text = movieName
-        
         self.rateLabel.text = rateLabel
-        
-        
         
     }
     

@@ -17,7 +17,9 @@ class VideoCVC: UICollectionViewCell {
     @IBOutlet weak var videoContainer: UIView!
     
     static let identifier: String = "VideoCVC"
-   
+    
+    let placeholder = UIImage(named: "place")
+    
 
     var cellTapAction : (()->())?
     
@@ -45,6 +47,14 @@ class VideoCVC: UICollectionViewCell {
     
     func cellConfigure(previewImage: String){
         self.videoPreviewImageView.image = UIImage(named: previewImage)
+        let imageUrl = Constant.MOVIE_DB_IMAGE_BASE_PATH.appending(previewImage)
+        
+        self.videoPreviewImageView.kf.setImage(
+            with: URL(string: imageUrl),
+            placeholder: self.placeholder,
+            options: [.transition(.fade(0.5))]
+        )
+
     }
     
     static func nib()-> UINib {

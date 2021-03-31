@@ -16,8 +16,17 @@ class CastsTVC: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     var layout = UICollectionViewFlowLayout()
     var selectedMovie: CastsModel?
-    var casts: [Cast] = []
+//    var casts: [Cast] = []
     var selectedMovieId: Int = 0
+    var selectCastHandler : ((_ selectedCast: Cast)->())?
+    
+    var casts: [Cast] = [] {
+      didSet {
+        self.collectionView.reloadData()
+      }
+    }
+
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -74,7 +83,7 @@ extension CastsTVC: UICollectionViewDelegate, UICollectionViewDataSource,UIColle
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CastCVC.identifier, for: indexPath) as! CastCVC
         cell.cellConfigure(posterImage: "sampleImage", movieName: "Artist Name Here")
         cell.titleLabel.text = item.name
-        print(item.name)
+
         let imageUrl = Constant.MOVIE_DB_IMAGE_BASE_PATH.appending(item.profilePath ?? "")
         let placeHolder =  UIImage(named: "place")
         cell.castImageView.kf.setImage(
@@ -91,18 +100,21 @@ extension CastsTVC: UICollectionViewDelegate, UICollectionViewDataSource,UIColle
         return CGSize(width: 120, height: 200)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectCastHandler!(self.casts[indexPath.row])
+
     }
+    
 }
 
 // MARK: - Alamofire
 extension CastsTVC {
     
+  
     func getMovieCasts(movieId: Int) {
         
         let id: String = String(movieId)
         
         AF.request("https://api.themoviedb.org/3/movie/\(id)/credits?api_key=\(Constant.API_KEY)&language=en-US").validate().responseDecodable(of: CastsModel.self) { (response) in
-            
             
           guard let movie = response.value else { return }
           self.selectedMovie = movie

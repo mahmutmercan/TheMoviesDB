@@ -14,7 +14,7 @@ class VideosTVC: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     var layout = UICollectionViewFlowLayout()
     
-    
+    let placeholder = UIImage(named: "place")
     
 
     override func awakeFromNib() {
@@ -68,12 +68,13 @@ extension VideosTVC {
 extension VideosTVC: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoCVC.identifier, for: indexPath) as! VideoCVC
-        cell.cellConfigure(previewImage: "sampleImage")        
+
+        cell.cellConfigure(previewImage: "sampleImage" )
         
         cell.cellTapAction = {
         }

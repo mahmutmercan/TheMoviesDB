@@ -103,21 +103,7 @@ extension MoviesTVC: UICollectionViewDelegate, UICollectionViewDataSource,UIColl
         return CGSize(width: 185, height: 300)
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
       self.selectMovieHandler!(self.films[indexPath.row])
-    }
-    
-    
-    
-}
-
-
-extension MoviesTVC {
-    func openNextVC(storyboardName: String, vcName: String){
-        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: vcName)
-        vc.modalPresentationStyle = .fullScreen
-        //self.present(vc, animated: true)
     }
 }

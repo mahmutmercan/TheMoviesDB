@@ -40,7 +40,6 @@ class CastCVC: UICollectionViewCell {
         castImageView.contentMode = .scaleAspectFill
         castImageView.clipsToBounds = true
         
-        
         titleLabel.textAlignment = .left
         titleLabel.textColor = UIColor.black
         titleLabel.font = UIFont.boldSystemFont(ofSize: 13)

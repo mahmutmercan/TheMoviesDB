@@ -13,7 +13,6 @@ class MainViewController: UIViewController {
     var films: [[Movie]] = [] // first array is Popular films, second array is upcoming films
     var selectedItem: Movie?
     
-    
     @IBOutlet weak var searchbar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
  
@@ -78,7 +77,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
               self.selectedMovie = selectedMovie
               self.selectedMovieId = selectedMovie.id
               self.performSegue(withIdentifier: "MovieDetailVC", sender: nil)
-              
             }
             return cell
         }

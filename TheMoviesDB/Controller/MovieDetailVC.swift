@@ -13,9 +13,19 @@ class MovieDetailVC: UIViewController {
     
     var films: [Movie] = []
     var items: [Movie] = []
+    
     var selectedItem: Movie?
-    var selectedMovieId: Int = 0
+    
     var selectedMovie: Movie?
+    var selectedMovieId: Int = 0
+    
+    var selectedPerson: PersonModel?
+    var selectedPersonId: Int = 0
+    
+    var selectedCast: Cast?
+    var selectedCastId: Int = 0
+    
+    
     
   @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var summaryLabel: UILabel!
@@ -104,12 +114,25 @@ extension MovieDetailVC: UITableViewDelegate, UITableViewDataSource {
             cell.selectionStyle = .none
             cell.summaryLabel.text = item?.overview
             
+            
             return cell
         } else if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: CastsTVC.identifier, for: indexPath) as! CastsTVC
             cell.selectionStyle = .none
             cell.headerTitle.text = "Starring"
             cell.getMovieCasts(movieId: self.selectedMovieId)
+            
+            cell.selectCastHandler = { [weak self] selectedCast in
+              guard let self = self else { return }
+              
+              self.selectedCast = selectedCast
+              self.selectedCastId = selectedCast.castID!
+                print(self.selectedCastId)
+                
+              self.performSegue(withIdentifier: "PersonDetailVC", sender: nil)
+
+            }
+            
             return cell
         } else if indexPath.row == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: VideosTVC.identifier, for: indexPath) as! VideosTVC
@@ -131,6 +154,16 @@ extension MovieDetailVC: UITableViewDelegate, UITableViewDataSource {
         }
         return UITableView.automaticDimension
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      if let vc = segue.destination as? PersonDetailVC{
+        vc.selectedCast = self.selectedCast
+        vc.selectedCastId = self.selectedCastId
+        
+      }
+    }
+
+    
 }
 
 // MARK: - Alamofire
@@ -141,7 +174,7 @@ extension MovieDetailVC {
       
       guard let movies = response.value?.results else { return }
       self.films = movies
-        self.items = self.films
+      self.items = self.films
       self.tableView.reloadData()
     }
   }
@@ -152,6 +185,16 @@ extension MovieDetailVC {
         
         guard let movie = response.value else { return }
         self.selectedMovie = movie
+        self.tableView.reloadData()
+      }
+    }
+    
+    func getPersonById(personId: Int) {
+        let id: String = String(personId)
+        AF.request("https://api.themoviedb.org/3/\(Constant.person)/\(id)?api_key=\(Constant.API_KEY)&language=en-US").validate().responseDecodable(of: PersonModel.self) { (response) in
+        
+            guard let person = response.value else { return }
+        self.selectedPerson = person
         self.tableView.reloadData()
       }
     }

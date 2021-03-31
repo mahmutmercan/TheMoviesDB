@@ -26,7 +26,6 @@ class SummaryTVC: UITableViewCell {
         return UINib(nibName: identifier, bundle: nil)
     }
     
-    
     private func setupCell(){
         layer.backgroundColor = UIColor.black.cgColor
         layer.cornerRadius = 4
