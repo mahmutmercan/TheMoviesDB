@@ -91,8 +91,6 @@ extension CastsTVC: UICollectionViewDelegate, UICollectionViewDataSource,UIColle
             placeholder: placeHolder,
             options: [.transition(.fade(0.5))]
         )
-        cell.cellTapAction = {
-        }
         return cell
     }
     

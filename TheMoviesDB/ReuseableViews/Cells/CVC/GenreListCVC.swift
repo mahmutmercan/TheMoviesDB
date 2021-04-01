@@ -24,20 +24,12 @@ class GenreListCVC: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    
-    // MARK: Outlets
-    
-    
-    // MARK: Setup
-    
- 
-    
+        
     override var isSelected: Bool{
         didSet{
             self.name.textColor = .yellow
         }
     }
-    
     
     func populate(_ genre: GenreCM) {
         self.name.text = genre.name

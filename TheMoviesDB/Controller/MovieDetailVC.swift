@@ -38,18 +38,13 @@ class MovieDetailVC: UIViewController {
         super.viewDidLoad()
       getMovieById(movieId: selectedMovie!.id)
         fetchPopularMovies()
-        setInterface()
+        setUpTableView()
         let gestureSlideBack = UISwipeGestureRecognizer(target: self, action: #selector(self.backTapped))
                       gestureSlideBack.direction = .right
                       self.view.addGestureRecognizer(gestureSlideBack)
         
     }
-    
-    private func setInterface(){
-        setUpTableView()
-        setTargets()
-    }
-    
+        
     func setUpTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -70,14 +65,9 @@ class MovieDetailVC: UIViewController {
         }
 }
 
-extension MovieDetailVC {
-    private func setTargets(){
-    }
-}
-
 extension MovieDetailVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //Row 1 = CoverPhoto / itle / Rating
+        //Row 1 = CoverPhoto / title / Rating
         //Row 2 = summary
         //Row 3 = Cast
         //Row 4 = Video //        
@@ -93,17 +83,17 @@ extension MovieDetailVC: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: MovieCoverTVC.identifier, for: indexPath) as! MovieCoverTVC
             cell.selectionStyle = .none
             
-            let imageUrl = Constant.MOVIE_DB_IMAGE_BASE_PATH.appending(item?.posterPath ?? "")
+            let imageUrl = Constant.MOVIE_DB_IMAGE_BASE_PATH.appending(item?.backdropPath ?? "")
             
             let placeHolder =  UIImage(named: "place")
-            cell.posterImageView.kf.setImage(
+            cell.coverImageView.kf.setImage(
                 with: URL(string: imageUrl),
                 placeholder: placeHolder,
                 options: [.transition(.fade(0.5))]
             )
             
             cell.titleLabel.text = item?.originalTitle
-            cell.rateLabel.text = "Rate: " + String(item?.voteAverage ?? 0) + " / " + String(item?.voteCount ?? 0)
+            cell.subTitle.text = "Rate: " + String(item?.voteAverage ?? 0) + " / " + String(item?.voteCount ?? 0)
 
             tableView.beginUpdates()
             tableView.endUpdates()
@@ -126,7 +116,11 @@ extension MovieDetailVC: UITableViewDelegate, UITableViewDataSource {
               guard let self = self else { return }
               
               self.selectedCast = selectedCast
-              self.selectedCastId = selectedCast.castID!
+                print(selectedCast.originalName)
+                print(selectedCast.creditID)
+                print(selectedCast.castID)
+                print(selectedCast.id)
+                self.selectedCastId = selectedCast.id
                 print(self.selectedCastId)
                 
               self.performSegue(withIdentifier: "PersonDetailVC", sender: nil)

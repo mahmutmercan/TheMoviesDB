@@ -35,7 +35,6 @@ class VideosTVC: UITableViewCell {
     
 }
 
-
 extension VideosTVC {
     private func setupCollectionView() {
         collectionView.backgroundColor = .clear
@@ -55,7 +54,6 @@ extension VideosTVC {
         let itemW = (screenSize - 48) / 2
         let itemH = itemW * 1.4
         
-        
         layout.scrollDirection = UICollectionView.ScrollDirection.horizontal
         layout.itemSize = CGSize(width: Int(Float(itemW)), height: Int(itemH))
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -63,7 +61,6 @@ extension VideosTVC {
     }
         
 }
-
 
 extension VideosTVC: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
@@ -76,9 +73,6 @@ extension VideosTVC: UICollectionViewDelegate, UICollectionViewDataSource,UIColl
 
         cell.cellConfigure(previewImage: "sampleImage" )
         
-        cell.cellTapAction = {
-        }
-        
         return cell
     }
     
@@ -86,12 +80,7 @@ extension VideosTVC: UICollectionViewDelegate, UICollectionViewDataSource,UIColl
         return CGSize(width: 220, height: 150)
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        
     }
-    
-    
-    
 }

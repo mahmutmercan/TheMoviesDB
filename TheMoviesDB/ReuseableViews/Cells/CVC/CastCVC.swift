@@ -19,17 +19,12 @@ class CastCVC: UICollectionViewCell {
     
    
 
-    var cellTapAction : (()->())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()
     }
-    
-    @IBAction func onAddToCartPressed(_ sender: Any) {
-        cellTapAction?()
-    }
-    
+        
     private func setupCell(){
         layer.backgroundColor = UIColor.black.cgColor
         layer.cornerRadius = 4

@@ -19,19 +19,12 @@ class VideoCVC: UICollectionViewCell {
     static let identifier: String = "VideoCVC"
     
     let placeholder = UIImage(named: "place")
-    
-
-    var cellTapAction : (()->())?
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()
     }
-    
-    @IBAction func onAddToCartPressed(_ sender: Any) {
-        cellTapAction?()
-    }
-    
+        
     private func setupCell(){
         layer.backgroundColor = UIColor.black.cgColor
         layer.cornerRadius = 4

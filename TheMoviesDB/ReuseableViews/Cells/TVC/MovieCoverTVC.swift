@@ -12,9 +12,9 @@ class MovieCoverTVC: UITableViewCell {
     static let identifier: String = "MovieCoverTVC"
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var posterImageView: UIImageView!
+    @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var posterContainer: UIView!
-    @IBOutlet weak var rateLabel: UILabel!
+    @IBOutlet weak var subTitle: UILabel!
 
 
     let placeholder = UIImage(named: "place")
@@ -36,7 +36,7 @@ class MovieCoverTVC: UITableViewCell {
      private func setupCell(){
         layer.backgroundColor = UIColor.black.cgColor
         layer.cornerRadius = 4
-        posterImageView.contentMode = .scaleToFill
+        coverImageView.contentMode = .scaleAspectFit
         
     }
     
@@ -44,14 +44,14 @@ class MovieCoverTVC: UITableViewCell {
         
         let imageUrl = Constant.MOVIE_DB_IMAGE_BASE_PATH.appending(posterImage)
         
-        self.posterImageView.kf.setImage(
+        self.coverImageView.kf.setImage(
             with: URL(string: imageUrl),
             placeholder: self.placeholder,
             options: [.transition(.fade(0.5))]
         )
         
         self.titleLabel.text = movieName
-        self.rateLabel.text = rateLabel
+        self.subTitle.text = rateLabel
         
     }
     
