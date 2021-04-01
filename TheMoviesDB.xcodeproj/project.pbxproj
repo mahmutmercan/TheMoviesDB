@@ -30,8 +30,6 @@
 		85A01A7C260F54DF00628CBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85A01A7A260F54DF00628CBE /* Main.storyboard */; };
 		85A01A7E260F54E000628CBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85A01A7D260F54E000628CBE /* Assets.xcassets */; };
 		85A01A81260F54E000628CBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85A01A7F260F54E000628CBE /* LaunchScreen.storyboard */; };
-		85A01A9F260F5F5D00628CBE /* GenreListCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A01A9D260F5F5D00628CBE /* GenreListCVC.swift */; };
-		85A01AA0260F5F5D00628CBE /* GenreListCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85A01A9E260F5F5D00628CBE /* GenreListCVC.xib */; };
 		85A01AA4260F617800628CBE /* MovieCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A01AA2260F617800628CBE /* MovieCVC.swift */; };
 		85A01AA5260F617800628CBE /* MovieCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85A01AA3260F617800628CBE /* MovieCVC.xib */; };
 		85A01AA8260F796000628CBE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A01AA7260F796000628CBE /* MainViewController.swift */; };
@@ -68,8 +66,6 @@
 		85A01A7D260F54E000628CBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		85A01A80260F54E000628CBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		85A01A82260F54E000628CBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		85A01A9D260F5F5D00628CBE /* GenreListCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListCVC.swift; sourceTree = "<group>"; };
-		85A01A9E260F5F5D00628CBE /* GenreListCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenreListCVC.xib; sourceTree = "<group>"; };
 		85A01AA2260F617800628CBE /* MovieCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCVC.swift; sourceTree = "<group>"; };
 		85A01AA3260F617800628CBE /* MovieCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCVC.xib; sourceTree = "<group>"; };
 		85A01AA7260F796000628CBE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -145,8 +141,6 @@
 		858F57CB26108F4A00F031FC /* CVC */ = {
 			isa = PBXGroup;
 			children = (
-				85A01A9D260F5F5D00628CBE /* GenreListCVC.swift */,
-				85A01A9E260F5F5D00628CBE /* GenreListCVC.xib */,
 				85A01AA2260F617800628CBE /* MovieCVC.swift */,
 				85A01AA3260F617800628CBE /* MovieCVC.xib */,
 				8536AEEB2610A9D8005CBDE9 /* VideoCVC.swift */,
@@ -283,7 +277,6 @@
 				8536AEDA26109D09005CBDE9 /* SummaryTVC.xib in Resources */,
 				85A01A7E260F54E000628CBE /* Assets.xcassets in Resources */,
 				858F57D526108FCF00F031FC /* MovieCoverTVC.xib in Resources */,
-				85A01AA0260F5F5D00628CBE /* GenreListCVC.xib in Resources */,
 				85A01AA5260F617800628CBE /* MovieCVC.xib in Resources */,
 				85A01A7C260F54DF00628CBE /* Main.storyboard in Resources */,
 				8536AEF02610AC4F005CBDE9 /* VideoCVC.xib in Resources */,
@@ -346,7 +339,6 @@
 				858F57B22610887800F031FC /* MovieModel.swift in Sources */,
 				8536AEE82610A970005CBDE9 /* VideosTVC.swift in Sources */,
 				85A01AAC260F900500628CBE /* MoviesTVC.swift in Sources */,
-				85A01A9F260F5F5D00628CBE /* GenreListCVC.swift in Sources */,
 				858F57C826108C9900F031FC /* MovieDetailVC.swift in Sources */,
 				8536AED926109D09005CBDE9 /* SummaryTVC.swift in Sources */,
 				856973422613422C008D0305 /* PersonDetailVC.swift in Sources */,

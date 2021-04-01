@@ -52,7 +52,6 @@ extension CastsTVC {
         collectionView.dataSource = self
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.setCollectionViewLayout(layout, animated: true)
-        collectionView.register(GenreListCVC.nib(), forCellWithReuseIdentifier: GenreListCVC.identifier)
         collectionView.register(CastCVC.nib(), forCellWithReuseIdentifier: CastCVC.identifier)
                 
         setupCollectionViewItemSize()
