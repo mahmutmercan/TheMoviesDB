@@ -7,13 +7,8 @@
 
 import UIKit
 
-protocol MoviesTVCDelegate {
-  func selectMovie(selectedMovie: Movie)
-}
-
 class MoviesTVC: UITableViewCell {
 
-    
     static let identifier: String = "MoviesTVC"
     @IBOutlet weak var headerTitle: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -28,7 +23,6 @@ class MoviesTVC: UITableViewCell {
     
     var imagePath: String = ""
     var movieName: String = ""
-    var delegate: MoviesTVCDelegate!
     var selectMovieHandler : ((_ selectedMovie: Movie)->())?
     
 
@@ -81,9 +75,7 @@ extension MoviesTVC {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.minimumLineSpacing = minimumLineSpacingValue
     }
-        
 }
-
 
 extension MoviesTVC: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
